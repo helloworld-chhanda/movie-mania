@@ -2,44 +2,56 @@
 import './App.css';
 
 function App() {
-  const barbieMovies = [
+  const data = [
     {
         "id": 1,
         "title": "Barbie in the Nutcracker",
-        "year": 2001,
-        "director": "Owen Hurley",
-        "cast": ["Kelly Sheridan", "Kirby Morrow", "Tim Curry"],
-        "synopsis": "A Barbie version of E.T.A. Hoffmann's tale of the..."
+        "image": "https://buffer.com/library/content/images/size/w1200/2023/10/free-images.jpg",
     },
     {
         "id": 2,
         "title": "Barbie as Rapunzel",
-        "year": 2002,
-        "director": "Owen Hurley",
-        "cast": ["Kelly Sheridan", "Anjelica Huston", "Cree Summer"],
-        "synopsis": "Barbie is an artist who paints her way out of..."
+        "image": "https://buffer.com/library/content/images/size/w1200/2023/10/free-images.jpg",
     },
     {
         "id": 3,
         "title": "Barbie of Swan Lake",
-        "year": 2003,
-        "director": "Owen Hurley",
-        "cast": ["Kelly Sheridan", "Mark Hildreth", "Kelsey Grammer"],
-        "synopsis": "Barbie comes to life in her third animated movie..."
+        "image": "https://buffer.com/library/content/images/size/w1200/2023/10/free-images.jpg",
     },
+    {
+        "id": 4,
+        "title": "Barbie as the Princess and the Pauper",
+        "image": "https://buffer.com/library/content/images/size/w1200/2023/10/free-images.jpg",
+    },
+    
 ]
   const handleRandomMovie =()=>{
-    const  number = Math.floor(Math.random()*10)%barbieMovies.length;
+    const  number = Math.floor(Math.random()*10)%data.length;
     console.log(number)
   }
   return (
     <div className="app-container">
       <div>
-        Movie Recommender
+        <b>Movie Recommender</b>
       </div>
+      <div>
+        Search the movie you want to watch:
+      </div>
+      <input placeholder='movie name'>
+      </input>
       <button onClick={handleRandomMovie}>
-        Movie list
+        Search
       </button>
+      <div>
+        <h1>Movie results:</h1>
+        <div>
+          {
+            data.map((movie)=>{
+              return <div>{movie.id} {movie.title} <img className="movie-img" src={movie.image} alt={movie.title} /></div>
+            })
+          }
+        </div>
+      </div>
     </div>
   );
 }
